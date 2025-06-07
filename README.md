@@ -1,4 +1,5 @@
 # FinSight - Personal Finance Tracker Backend
+# STAGE 3 FINISHED 
 
 A robust backend service for the FinSight Personal Finance Tracker application, built with modern technologies and best practices.
 

@@ -1,8 +1,7 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '../../generated/prisma'
 import { Request, Response, NextFunction } from 'express'
 import logger from '../utils/logger.ts'
 import { transactionSchema } from '../schemas/transactionSchema.ts'
-import { error } from 'winston'
 import { AppError } from '../middlewares/errorHandler'
 
 
@@ -47,11 +46,11 @@ export const TransactionController = {
       res.status(200).json(transactions)
     } catch (err) {
       next(err)
-    },
+    }
 
-
-
-    async update(req: Request, res: Response, next: NextFunction) {
+ 
+  },
+   async update(req: Request, res: Response, next: NextFunction) {
       try {
         const id = req.params.id;
         const parsed = transactionSchema.safeParse(req.body)
@@ -99,7 +98,7 @@ export const TransactionController = {
 
         if (!existsing) {
           return res.status(404).json({
-            error(: 'Transaction not found')
+            error:'Transaction not found'
           })
         }
 
@@ -115,7 +114,7 @@ export const TransactionController = {
       } catch (err) {
         next(err)
       }
-    }
+    },
   
     async dashboard(req: Request, res: Response, next: NextFunction) {
       try {
@@ -148,8 +147,6 @@ export const TransactionController = {
         next(err)
       }
     }
-
-  }
 
 
 }

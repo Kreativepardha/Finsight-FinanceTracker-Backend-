@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '../../generated/prisma'
+
 import { budgetSchema } from "../schemas/budgetSchema";
 import logger from "../utils/logger";
 import { error } from "winston";

@@ -7,6 +7,7 @@ import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from './config/swagger'
 import transactionRoutes from './routes/transactionRoute'
 import budgetRoutes from './routes/budgetRoute'
+import { errorHandler } from './middlewares/errorHandler'
 import { env } from './config/env'
 
 const app = express()
@@ -24,11 +25,11 @@ const limiter = rateLimit({
 })
 
 app.use(limiter)
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+app.use('/api-docs', swaggerUi.serve)
+app.get('/api-docs', swaggerUi.setup(swaggerSpec))
 
 app.use('/api/transactions', transactionRoutes)
 app.use('/api/budgets', budgetRoutes)
-
 
 app.use(errorHandler)
 

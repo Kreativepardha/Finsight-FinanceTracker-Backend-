@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express'
 import logger from '../utils/logger.ts'
 import { transactionSchema } from '../schemas/transactionSchema.ts'
 import { error } from 'winston'
+import { AppError } from '../middlewares/errorHandler'
 
 
 const prisma = new PrismaClient()
@@ -149,39 +150,6 @@ export const TransactionController = {
     }
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

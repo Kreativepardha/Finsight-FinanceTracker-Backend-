@@ -22,15 +22,16 @@ model Transaction {
     date DateTime
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    category Category
   }
 
 
 enum Category {
-    Food,
-    Rent,
-    Travel,
-    Groceries,
-    Subscriptions,
+    Food
+    Rent
+    Travel
+    Groceries
+    Subscriptions
     other
   }
 

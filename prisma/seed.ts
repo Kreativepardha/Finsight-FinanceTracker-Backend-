@@ -1,10 +1,11 @@
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "../generated/prisma";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const categories = ['Food', 'Rent', 'Travel', 'Utilities', 'Entertainment', 'Other'];
+
+  const categories = ['Food', 'Rent', 'Travel', 'Groceries', 'Subscriptions', 'other'];
 
   for (let i = 0; i < 20; i++) {
     await prisma.transaction.create({

@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import { TransactionController } from '../controllers/transactionController'
-import { validateRequest } from '../middlewares/validateRequest'
 import { transactionSchema } from '../schemas/transactionSchema'
 
 const router = Router()
@@ -23,7 +22,7 @@ const router = Router()
  *       400:
  *         description: Invalid input data
  */
-router.post('/', validateRequest(transactionSchema.create), TransactionController.create)
+router.post('/', TransactionController.create)
 
 /**
  * @swagger
@@ -99,7 +98,7 @@ router.get('/dashboard', TransactionController.dashboard)
  *       404:
  *         description: Transaction not found
  */
-router.put('/:id', validateRequest(transactionSchema.update), TransactionController.update)
+router.put('/:id', TransactionController.update)
 
 /**
  * @swagger

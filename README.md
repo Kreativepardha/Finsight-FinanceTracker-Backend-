@@ -130,3 +130,142 @@ bun test
 ## License
 
 MIT
+
+## API Endpoints with Curl Commands
+
+### Transactions
+
+#### Get All Transactions
+```bash
+curl -X GET http://localhost:3000/api/transactions
+```
+
+#### Create a New Transaction
+```bash
+curl -X POST http://localhost:3000/api/transactions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 100.50,
+    "description": "Grocery shopping",
+    "date": "2024-03-15",
+    "categoryId": 1
+  }'
+```
+
+#### Get a Specific Transaction
+```bash
+curl -X GET http://localhost:3000/api/transactions/1
+```
+
+#### Update a Transaction
+```bash
+curl -X PUT http://localhost:3000/api/transactions/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 150.75,
+    "description": "Updated grocery shopping",
+    "date": "2024-03-15",
+    "categoryId": 1
+  }'
+```
+
+#### Delete a Transaction
+```bash
+curl -X DELETE http://localhost:3000/api/transactions/1
+```
+
+### Budgets
+
+#### Get All Budgets
+```bash
+curl -X GET http://localhost:3000/api/budgets
+```
+
+#### Create a New Budget
+```bash
+curl -X POST http://localhost:3000/api/budgets \
+  -H "Content-Type: application/json" \
+  -d '{
+    "categoryId": 1,
+    "amount": 500.00,
+    "month": "2024-03"
+  }'
+```
+
+#### Get a Specific Budget
+```bash
+curl -X GET http://localhost:3000/api/budgets/1
+```
+
+#### Update a Budget
+```bash
+curl -X PUT http://localhost:3000/api/budgets/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "categoryId": 1,
+    "amount": 600.00,
+    "month": "2024-03"
+  }'
+```
+
+#### Delete a Budget
+```bash
+curl -X DELETE http://localhost:3000/api/budgets/1
+```
+
+### Categories
+
+#### Get All Categories
+```bash
+curl -X GET http://localhost:3000/api/categories
+```
+
+#### Get Category Statistics
+```bash
+curl -X GET http://localhost:3000/api/categories/stats
+```
+
+## Request/Response Examples
+
+### Transaction Response Example
+```json
+{
+  "id": 1,
+  "amount": 100.50,
+  "description": "Grocery shopping",
+  "date": "2024-03-15T00:00:00.000Z",
+  "categoryId": 1,
+  "createdAt": "2024-03-15T10:00:00.000Z",
+  "updatedAt": "2024-03-15T10:00:00.000Z"
+}
+```
+
+### Budget Response Example
+```json
+{
+  "id": 1,
+  "categoryId": 1,
+  "amount": 500.00,
+  "month": "2024-03",
+  "createdAt": "2024-03-15T10:00:00.000Z",
+  "updatedAt": "2024-03-15T10:00:00.000Z"
+}
+```
+
+## Error Handling
+
+The API uses standard HTTP status codes and returns error responses in the following format:
+
+```json
+{
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human readable error message"
+  }
+}
+```
+
+Common error codes:
+- 400: Bad Request
+- 404: Not Found
+- 500: Internal Server Error

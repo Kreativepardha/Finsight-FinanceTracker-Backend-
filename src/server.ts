@@ -1,5 +1,5 @@
 import app from './app.ts'
-import { env } from './config/env.ts/index.ts'
+import { env } from './config/env.ts'
 
 
 

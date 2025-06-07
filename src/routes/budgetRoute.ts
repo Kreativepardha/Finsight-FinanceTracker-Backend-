@@ -1,0 +1,17 @@
+import { Router } from 'express'
+import { BudgetController } from '../controllers/budgetController'
+import { budgetSchema } from '../schemas/budgetSchema'
+
+
+const router = Router()
+
+
+router.post('/', BudgetController.setBudget)
+router.get('/insights', BudgetController.getInsights)
+
+
+
+export default router;
+
+
+

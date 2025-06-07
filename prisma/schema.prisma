@@ -13,3 +13,35 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model Transaction {
+    id String @id @default(uuid())
+    amount Float
+    description String
+    date DateTime
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+  }
+
+
+enum Category {
+    Food,
+    Rent,
+    Travel,
+    Groceries,
+    Subscriptions,
+    other
+  }
+
+model Budget {
+    id String @id @default(uuid())
+    category Category
+    amount Float 
+    month Int
+    year Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([category, month, year])
+  }

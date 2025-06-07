@@ -1,11 +1,26 @@
-import { Request, Response, NextFunction } from 'express'
 
+import { Request, Response, NextFunction } from 'express';
+import { ApiError } from '../utils/apiError';
+import logger from '../utils/logger';
 
+export function errorHandler(
+  err: Error | ApiError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const statusCode = (err as ApiError).statusCode || 500;
 
-export function errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
+  logger.error('Error caught', {
+    meta: {
+      message: err.message,
+      stack: err.stack,
+    },
+  });
 
-  res.status(err.statusCode || 500).json({
-    sucess: false,
-    message: err.message || 'Internal Server Error'
-  })
+  res.status(statusCode).json({
+    success: false,
+    message: err.message,
+    statusCode,
+  });
 }

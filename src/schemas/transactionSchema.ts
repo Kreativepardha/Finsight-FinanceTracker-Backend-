@@ -1,22 +1,17 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
-const categoryEnum = z.enum(['Food', 'Rent', 'Travel', 'Groceries', 'Subscriptions', 'other']);
+export const categories = [
+  'Food',
+  'Rent',
+  'Travel',
+  'Utilities',
+  'Entertainment',
+  'Other',
+] as const;
 
-const baseTransactionSchema = z.object({
-  amount: z.number().positive(),
-  description: z.string().min(1),
-  date: z.string().transform((str) => new Date(str)),
-  category: categoryEnum,
+export const transactionSchema = z.object({
+  amount: z.number().positive({ message: 'Amount must be a positive number' }),
+  description: z.string().min(1, { message: 'Description is required' }),
+ date: z.string(),
+  category: z.enum(categories, { required_error: 'Category is required' }),
 });
-
-export const transactionSchema = {
-  create: baseTransactionSchema,
-  update: baseTransactionSchema.partial(),
-  query: z.object({
-    startDate: z.string().optional(),
-    endDate: z.string().optional(),
-    category: categoryEnum.optional(),
-  }),
-};
-
-

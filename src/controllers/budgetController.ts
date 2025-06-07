@@ -10,8 +10,6 @@ const prisma = new PrismaClient()
 
 
 
-
-
 export const BudgetController = {
   async setBudget(req: Request, res: Response, next: NextFunction) {
     try {

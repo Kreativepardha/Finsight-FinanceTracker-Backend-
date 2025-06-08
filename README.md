@@ -140,6 +140,9 @@ MIT
 ```bash
 curl -X GET http://localhost:3000/api/transactions
 curl -X GET http://localhost:3000/api/transactions | jq
+# LIVE
+ curl -X GET http://134.199.227.56/api/transactions/
+ curl -X GET http://134.199.227.56/api/transactions/ | jq
 ```
 
 #### Create a New Transaction
@@ -152,16 +155,37 @@ curl -X POST http://localhost:5000/api/transactions \
     "date": "2024-03-15",
     "category": "Food"
   }'
+# LIVE
+curl -X POST http://134.199.227.56/api/transactions \
+      -H "Content-Type: application/json" \
+      -d '{
+    "amount": 100.50,
+    "description": "Grocery shopping",
+    "date": "2024-03-15",
+    "category": "Food"
+  }'
 ```
 
 #### Get a Specific Transaction
 ```bash
-curl -X GET http://localhost:5000/api/transactions/e58640c5-7d2a-420a-bfe1-c9b007e1cb54 
+curl -X GET http://localhost:5000/api/transactions/e58640c5-7d2a-420a-bfe1-c9b007e1cb54
+# LIVE
+curl -X GET http://134.199.227.56/api/transactions/db3b95fa-64f5-4eda-a3c5-8b5456079ee7
 ```
 
 #### Update a Transaction
 ```bash
-curl -X PUT http://localhost:5000/api/transactions/e58640c5-7d2a-420a-bfe1-c9b007e1cb54 \
+curl -X PUT http://localhost:5000/api/transactions/db3b95fa-64f5-4eda-a3c5-8b5456079ee7\
+                                 -H "Content-Type: application/json" \
+                                 -d '{
+                               "amount": 150.75,
+                               "description": "Updated grocery shopping",
+                               "date": "2024-03-15",
+                               "category": "Food"
+                             }'
+
+# LIVE
+curl -X PUT http://134.199.227.56/api/transactions/db3b95fa-64f5-4eda-a3c5-8b5456079ee7\
                                  -H "Content-Type: application/json" \
                                  -d '{
                                "amount": 150.75,
@@ -179,6 +203,8 @@ curl -X DELETE http://localhost:3000/api/transactions/1
 #### Get Dashboard
 ```bash
 curl -X GET http://localhost:3000/api/transactions/dashboard
+#LIVE
+curl -X GET http://134.199.227.56/api/transactions/dashboard | jq
 ```
 
 
@@ -187,11 +213,23 @@ curl -X GET http://localhost:3000/api/transactions/dashboard
 #### Get All Budgets
 ```bash
 curl -X GET http://localhost:3000/api/budgets
+#LIVE
+curl -X GET http://134.199.227.56/api/budgets | jq
 ```
 
 #### Create a New Budget
 ```bash
 curl -X POST http://localhost:5000/api/budgets \
+                                 -H "Content-Type: application/json" \
+                                 -d '{
+                               "category": "Food",
+                               "amount": 500.00,
+                               "month": 3,
+                               "year" : 2004
+                             }'
+
+#LIVE
+curl -X POST http://134.199.227.56/api/budgets \
                                  -H "Content-Type: application/json" \
                                  -d '{
                                "category": "Food",
@@ -205,6 +243,8 @@ curl -X POST http://localhost:5000/api/budgets \
 #### Get All Insights
 ```bash
 curl -X GET http://localhost:3000/api/budgets/insights
+#LIVE
+curl -X GET http://134.199.227.56/api/budgets/insights
 ```
 
 

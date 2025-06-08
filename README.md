@@ -175,6 +175,12 @@ curl -X PUT http://localhost:5000/api/transactions/e58640c5-7d2a-420a-bfe1-c9b00
 curl -X DELETE http://localhost:3000/api/transactions/1
 ```
 
+#### Get Dashboard
+```bash
+curl -X GET http://localhost:3000/api/transactions/dashboard
+```
+
+
 ### Budgets
 
 #### Get All Budgets
@@ -194,38 +200,12 @@ curl -X POST http://localhost:5000/api/budgets \
                              }'
 ```
 
-#### Get a Specific Budget
+
+#### Get All Insights
 ```bash
-curl -X GET http://localhost:3000/api/budgets/1
+curl -X GET http://localhost:3000/api/budgets/insights
 ```
 
-#### Update a Budget
-```bash
-curl -X PUT http://localhost:3000/api/budgets/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "categoryId": 1,
-    "amount": 600.00,
-    "month": "2024-03"
-  }'
-```
-
-#### Delete a Budget
-```bash
-curl -X DELETE http://localhost:3000/api/budgets/1
-```
-
-### Categories
-
-#### Get All Categories
-```bash
-curl -X GET http://localhost:3000/api/categories
-```
-
-#### Get Category Statistics
-```bash
-curl -X GET http://localhost:3000/api/categories/stats
-```
 
 ## Request/Response Examples
 

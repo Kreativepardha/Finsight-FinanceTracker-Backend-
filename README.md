@@ -160,14 +160,14 @@ curl -X GET http://localhost:3000/api/transactions/1
 
 #### Update a Transaction
 ```bash
-curl -X PUT http://localhost:3000/api/transactions/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "amount": 150.75,
-    "description": "Updated grocery shopping",
-    "date": "2024-03-15",
-    "categoryId": 1
-  }'
+curl -X PUT http://localhost:5000/api/transactions/e58640c5-7d2a-420a-bfe1-c9b007e1cb54 \
+                                 -H "Content-Type: application/json" \
+                                 -d '{
+                               "amount": 150.75,
+                               "description": "Updated grocery shopping",
+                               "date": "2024-03-15",
+                               "category": "Food"
+                             }'
 ```
 
 #### Delete a Transaction

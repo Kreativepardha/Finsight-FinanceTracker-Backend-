@@ -8,7 +8,7 @@ const router = Router()
 
 router.post('/', BudgetController.setBudget)
 router.get('/insights', BudgetController.getInsights)
-
+router.get('/', BudgetController.getAllBudgets);
 
 
 export default router;

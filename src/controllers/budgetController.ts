@@ -83,6 +83,16 @@ export const BudgetController = {
       next(err);
     }
   },
+  async getAllBudgets(req: Request, res: Response, next: NextFunction) {
+      try {
+        const budgets = await prisma.budget.findMany();
+        res.status(200).json(budgets)
+
+      } catch (err) {
+        next(err)
+      }
+  }
+  
 };
 
 

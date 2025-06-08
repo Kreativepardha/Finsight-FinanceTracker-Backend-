@@ -139,6 +139,7 @@ MIT
 #### Get All Transactions
 ```bash
 curl -X GET http://localhost:3000/api/transactions
+curl -X GET http://localhost:3000/api/transactions | jq
 ```
 
 #### Create a New Transaction

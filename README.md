@@ -184,13 +184,14 @@ curl -X GET http://localhost:3000/api/budgets
 
 #### Create a New Budget
 ```bash
-curl -X POST http://localhost:3000/api/budgets \
-  -H "Content-Type: application/json" \
-  -d '{
-    "categoryId": 1,
-    "amount": 500.00,
-    "month": "2024-03"
-  }'
+curl -X POST http://localhost:5000/api/budgets \
+                                 -H "Content-Type: application/json" \
+                                 -d '{
+                               "category": "Food",
+                               "amount": 500.00,
+                               "month": 3,
+                               "year" : 2004
+                             }'
 ```
 
 #### Get a Specific Budget

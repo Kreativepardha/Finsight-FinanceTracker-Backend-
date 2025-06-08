@@ -155,7 +155,7 @@ curl -X POST http://localhost:5000/api/transactions \
 
 #### Get a Specific Transaction
 ```bash
-curl -X GET http://localhost:3000/api/transactions/1
+curl -X GET http://localhost:5000/api/transactions/e58640c5-7d2a-420a-bfe1-c9b007e1cb54 
 ```
 
 #### Update a Transaction

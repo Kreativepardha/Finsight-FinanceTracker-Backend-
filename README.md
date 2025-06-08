@@ -1,4 +1,5 @@
 # FinSight - Personal Finance Tracker Backend
+# STAGE 3 FINISHED 
 
 A robust backend service for the FinSight Personal Finance Tracker application, built with modern technologies and best practices.
 
@@ -142,37 +143,43 @@ curl -X GET http://localhost:3000/api/transactions
 
 #### Create a New Transaction
 ```bash
-curl -X POST http://localhost:3000/api/transactions \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -X POST http://localhost:5000/api/transactions \
+      -H "Content-Type: application/json" \
+      -d '{
     "amount": 100.50,
     "description": "Grocery shopping",
     "date": "2024-03-15",
-    "categoryId": 1
+    "category": "Food"
   }'
 ```
 
 #### Get a Specific Transaction
 ```bash
-curl -X GET http://localhost:3000/api/transactions/1
+curl -X GET http://localhost:5000/api/transactions/e58640c5-7d2a-420a-bfe1-c9b007e1cb54 
 ```
 
 #### Update a Transaction
 ```bash
-curl -X PUT http://localhost:3000/api/transactions/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "amount": 150.75,
-    "description": "Updated grocery shopping",
-    "date": "2024-03-15",
-    "categoryId": 1
-  }'
+curl -X PUT http://localhost:5000/api/transactions/e58640c5-7d2a-420a-bfe1-c9b007e1cb54 \
+                                 -H "Content-Type: application/json" \
+                                 -d '{
+                               "amount": 150.75,
+                               "description": "Updated grocery shopping",
+                               "date": "2024-03-15",
+                               "category": "Food"
+                             }'
 ```
 
 #### Delete a Transaction
 ```bash
 curl -X DELETE http://localhost:3000/api/transactions/1
 ```
+
+#### Get Dashboard
+```bash
+curl -X GET http://localhost:3000/api/transactions/dashboard
+```
+
 
 ### Budgets
 
@@ -183,47 +190,22 @@ curl -X GET http://localhost:3000/api/budgets
 
 #### Create a New Budget
 ```bash
-curl -X POST http://localhost:3000/api/budgets \
-  -H "Content-Type: application/json" \
-  -d '{
-    "categoryId": 1,
-    "amount": 500.00,
-    "month": "2024-03"
-  }'
+curl -X POST http://localhost:5000/api/budgets \
+                                 -H "Content-Type: application/json" \
+                                 -d '{
+                               "category": "Food",
+                               "amount": 500.00,
+                               "month": 3,
+                               "year" : 2004
+                             }'
 ```
 
-#### Get a Specific Budget
+
+#### Get All Insights
 ```bash
-curl -X GET http://localhost:3000/api/budgets/1
+curl -X GET http://localhost:3000/api/budgets/insights
 ```
 
-#### Update a Budget
-```bash
-curl -X PUT http://localhost:3000/api/budgets/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "categoryId": 1,
-    "amount": 600.00,
-    "month": "2024-03"
-  }'
-```
-
-#### Delete a Budget
-```bash
-curl -X DELETE http://localhost:3000/api/budgets/1
-```
-
-### Categories
-
-#### Get All Categories
-```bash
-curl -X GET http://localhost:3000/api/categories
-```
-
-#### Get Category Statistics
-```bash
-curl -X GET http://localhost:3000/api/categories/stats
-```
 
 ## Request/Response Examples
 

@@ -143,13 +143,13 @@ curl -X GET http://localhost:3000/api/transactions
 
 #### Create a New Transaction
 ```bash
-curl -X POST http://localhost:3000/api/transactions \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -X POST http://localhost:5000/api/transactions \
+      -H "Content-Type: application/json" \
+      -d '{
     "amount": 100.50,
     "description": "Grocery shopping",
     "date": "2024-03-15",
-    "categoryId": 1
+    "category": "Food"
   }'
 ```
 

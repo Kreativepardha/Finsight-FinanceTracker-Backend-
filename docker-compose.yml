@@ -1,16 +1,29 @@
 version: '3.8'
+
 services:
+  app:
+    build: .
+    container_name: bun-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
   postgres:
-      image: postgres:latest 
-      restart: always
-      environment:
-          POSTGRES_USER: postgres 
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: finsight
-      ports:
-        - "5432:5432"
-      volumes:
-      - pgdata:/var/lib/postgresql/data 
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: finsight
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
   redis:
     image: redis:latest
